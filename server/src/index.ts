@@ -1,5 +1,6 @@
 import express from 'express';
 import { createServer } from 'http';
+import { randomUUID } from 'crypto';
 import { WebSocketServer } from 'ws';
 import type { ClientMessage } from 'shared';
 import { STARTING_STACK } from 'shared';
@@ -30,7 +31,7 @@ wss.on('connection', (ws) => {
 
       switch (message.type) {
         case 'C_JOIN_LOBBY': {
-          playerId = crypto.randomUUID();
+          playerId = randomUUID();
           connections.add(ws, playerId, message.playerName, message.mode);
 
           connections.send(playerId, {
@@ -133,7 +134,8 @@ wss.on('connection', (ws) => {
           break;
         }
       }
-    } catch {
+    } catch (err) {
+      console.error('Message handling error:', err, 'raw:', data.toString().slice(0, 200));
       ws.send(JSON.stringify({ type: 'S_ERROR', message: 'Invalid message format' }));
     }
   });

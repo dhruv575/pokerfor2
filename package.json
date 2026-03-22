@@ -1,5 +1,8 @@
 {
   "private": true,
+  "engines": {
+    "node": ">=20"
+  },
   "workspaces": ["shared", "server", "webui"],
   "scripts": {
     "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w webui\"",
