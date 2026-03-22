@@ -1,0 +1,12 @@
+{
+  "private": true,
+  "workspaces": ["shared", "server", "webui"],
+  "scripts": {
+    "dev": "concurrently \"npm run dev -w server\" \"npm run dev -w webui\"",
+    "build": "npm run build -w shared && npm run build -w server && npm run build -w webui",
+    "test": "npm run test -w server"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
+}

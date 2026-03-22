@@ -1,0 +1,9 @@
+export const MAX_SEATS = 6;
+export const STARTING_STACK = 200;
+export const SMALL_BLIND = 1;
+export const BIG_BLIND = 2;
+export const MIN_PLAYERS_TO_START = 2;
+export const TURN_TIMEOUT_MS = 30_000;
+export const BOT_DELAY_MIN_MS = 150;
+export const BOT_DELAY_MAX_MS = 500;
+export const HAND_START_DELAY_MS = 1_500;
